@@ -81,10 +81,28 @@ class Sudoku():
         for i in self.tablero:
             
             if (0 in i):
-
+                
                 return False
         return True
 
+    def getTable(self):
+        self.tableroImpreso = ""
+        for i in range(self.longitud):
+            if i == self.zona or i == self.zona*2:
+                for n in range(self.longitud):
+                    self.tableroImpreso += "--"
+                    if n == self.zona-1 or n == self.zona*2-1:
+                        self.tableroImpreso += "+-"
+                if n == self.zona-1 or n == self.zona*2-1:
+                    self.tableroImpreso = self.tableroImpreso[:-3]
+                self.tableroImpreso += "\n"
+            for j in range(self.longitud):
+                if j == self.zona or j == self.zona*2:
+                    self.tableroImpreso += "| "
+                self.tableroImpreso += str(self.tablero[i][j]) + " "
+            self.tableroImpreso += "\n"
+
+        return self.tableroImpreso
     
 
  
