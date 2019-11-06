@@ -29,7 +29,7 @@ class Sudoku():
 
     def no_repetir_fila(self, x, n):
         
-        if (n in self.tablero[x]):
+        if (int(n) in self.tablero[int(x)]):
             return False
         else:
             return True
@@ -40,7 +40,7 @@ class Sudoku():
     def no_repetir_columna(self, y, n):
         
         for i in self.tablero:
-            if (i[y] == n):
+            if (i[int(y)] == int(n)):
                 return False
             else:
                 return  True
@@ -51,7 +51,7 @@ class Sudoku():
     def no_repetir_zona (self, x, y, n):
 
         
-        if (x < self.zona):
+        if (int(x) < int(self.zona)):
             x = 0
         elif (x >= self.zona and x <= (self.zona * 2)):
             x = self.zona
@@ -70,7 +70,7 @@ class Sudoku():
 
         if self.no_cambiar(x, y) and self.no_repetir_fila(x, n) and self.no_repetir_columna(y, n) and self.no_repetir_zona(x, y, n):
 
-            self.tablero[x][y] = n
+            self.tablero[int(x)][int(y)] = int(n)
             
             return True
         else:
@@ -103,11 +103,3 @@ class Sudoku():
             self.tableroImpreso += "\n"
 
         return self.tableroImpreso
-    
-
- 
-
-   
-
-
-        

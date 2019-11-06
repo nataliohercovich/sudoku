@@ -7,16 +7,19 @@ class Interfaz():
     def pedir_longitud(self):
 
         self.longitud = 0
-        self.tablero = api(self.longitud)
+        self.tablero =  ([[5,3,0,0,7,0,0,0,0],
+                          [6,0,0,1,9,5,0,0,0],
+                          [0,9,8,0,0,0,0,6,0],
+                          [8,0,0,0,6,0,0,0,3],
+                          [4,0,0,8,0,3,0,0,1],
+                          [7,0,0,0,2,0,0,0,6],
+                          [0,6,0,0,0,0,2,8,0],
+                          [0,0,0,4,1,9,0,0,5],
+                          [0,0,0,0,8,0,0,7,9]])
+        
         self.juego = Sudoku(self.tablero)
 
-        while self.longitud != "9" and self.longitud != "4":
-            self.longitud = input("Ingrese el tamaño del tablero (4 o 9)")
-
-            if self.longitud != "9" and self.longitud != "4":
-                print ("Ingrese 9 o 4 \n\n")
-            
-        self.longitud = int(self.longitud)
+        
 
     def ingresar_numero(self, x, y, n):
         try:
@@ -37,17 +40,19 @@ class Interfaz():
         self.x = input("Ingrese numero de fila: ")
         self.y = input("Ingrse numero de columna: ")
         print("")
+        
 
     def jugar(self):
 
         self.pedir_longitud()
         print("")
-        print(self.juego.getTable())
+        
+        while not self.juego.gano():
+            print(self.juego.getTable())
 
-        while not self.juego.getTable():
             self.pedir_valores()
             if self.ingresar_numero(self.n , self.x , self.y):
-                print(self.juego.poner_numero(self.n , int(self.x)-1 , int(self.y)-1))
+                print(self.juego.poner_numero(int(self.n) , int(self.x)-1 , int(self.y)-1))
     
             else:
                 print("Ingrese un numero del 1 al 9")
@@ -56,7 +61,7 @@ class Interfaz():
 
 if __name__ == "__main__":
     juego = Interfaz()
-    juego.jugar()
+    
+    juego.jugar()    
 
 
-        
